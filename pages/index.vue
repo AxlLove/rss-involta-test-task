@@ -1,5 +1,8 @@
 <template>
-  <v-header/>
+  <div>
+    <v-header/>
+    <page-content/>
+  </div>
 </template>
 
 <script>
