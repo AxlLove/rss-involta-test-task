@@ -29,10 +29,10 @@ export default {
     width: 100%;
     height: 100%;
     border: none;
-    opacity: 0.5;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.05);
     background: #FFFFFF;
     border-radius: 3px;
+    padding: 0 0 0 15px;
 
   }
   .icon {
@@ -44,8 +44,11 @@ export default {
     top: 10px;
     bottom: 10px;
   }
-  input:focus {
-    border: 1px solid black;
-    opacity: .3;
+  .input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
   }
 </style>
