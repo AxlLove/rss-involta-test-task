@@ -27,4 +27,14 @@ export default {
   justify-content: space-between;
 }
 
+@media (max-width: 1080px) {
+  .nav {
+    margin: 29px 90px 0;
+  }
+}
+@media (max-width: 840px) {
+  .nav {
+    margin: 20px 20px 0;
+  }
+}
 </style>

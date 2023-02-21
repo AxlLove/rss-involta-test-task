@@ -1,6 +1,7 @@
 <template>
-  <ul class="rss-feed">
+  <ul class="rss-feed rss-feed_type_grid">
     <grid-card v-for="card in cards" :card="card" key="card.id"/>
+    <!-- <image-card v-for="card in cards" :card="card" key="card.id"/>  -->
   </ul>
 </template>
 
@@ -21,4 +22,15 @@ export default {
   .rss-feed {
     margin: 28px 170px 0;
   }
+  .rss-feed_type_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  @media (max-width: 1080px) {
+  .rss-feed {
+    margin: 29px 90px 0;
+  }
+}
 </style>

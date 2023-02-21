@@ -51,4 +51,19 @@ export default {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
   }
+  .header__title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  @media (max-width: 1080px) {
+    .input__container {
+      width: 291px;
+    }
+  }
+  @media (max-width: 840px) {
+    .input__container {
+      width: 392px;
+    }
+}
 </style>

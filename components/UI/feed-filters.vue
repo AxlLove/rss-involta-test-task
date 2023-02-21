@@ -31,4 +31,5 @@ export default {
 .main__filter-link_active {
   color: rgba(0, 0, 0, 1)
 }
+
 </style>

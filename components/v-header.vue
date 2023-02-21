@@ -60,4 +60,38 @@ export default {
   .header__reset-button:hover {
     opacity: 0.8;
   }
+
+  @media (max-width: 1080px) {
+  .header {
+    margin: 29px 90px 0;
+  }
+  .header__title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+  .header__container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+}
+@media (max-width: 840px) {
+  .header {
+    margin: 36px 20px 0;
+  }
+  .header__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 23px;
+  }
+  .header__container {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
 </style>
