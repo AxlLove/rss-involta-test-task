@@ -26,8 +26,8 @@ export default {
   },
   watch:  {
     searchQuery(newQuery) {
-      console.log(newQuery)
-      this.$router.push({query: { filter: newQuery}});
+      console.log(this.$route.query)
+      this.$router.push({query: {...this.$route.query, filter: newQuery}});
     }
   }
 }

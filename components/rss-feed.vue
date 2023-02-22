@@ -1,7 +1,7 @@
 <template>
   <ul class="rss-feed rss-feed_type_grid">
-    <grid-card v-if="!$store.state.viewModule.grid" v-for="card in cards" :card="card" key="card.id"/>
-    <image-card v-else v-for="card in cards" :card="card" key="card.id"/>
+    <grid-card v-if="!$store.state.viewModule.grid" v-for="card in cards" :card="card" :key="card.id"/>
+    <image-card v-else v-for="card in cards" :card="card" :key="card.id"/>
   </ul>
 </template>
 
@@ -12,7 +12,26 @@ export default {
   data() {
     return {
       card: mockMos,
-      cards: mockFeed()
+      cards: mockFeed(),
+      result: this.params
+    }
+  },
+  // computed: {
+  //   getContent() {
+  //   console.log(this.params)
+  //    return this.$store
+  //   },
+  //   params() {
+  //     return this.$route.query
+  //   }
+  // },
+  watch: {
+    '$route.query': {
+      deep: true,
+      handler(newQuery) {
+        console.log('=>', newQuery)
+        this.$store.commit('postModule/setFilteredPosts', newQuery)
+      }
     }
   }
 }

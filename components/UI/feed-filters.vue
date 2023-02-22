@@ -1,8 +1,8 @@
 <template>
     <div class="main__filter-links">
-      <nuxt-link :to="{query: ''}" exact active-class="main__filter-link_active"  class="main__filter-link">Все</nuxt-link>
-      <nuxt-link :to="{query: {source: 'lenta'}}" exact active-class="main__filter-link_active" class="main__filter-link">Lenta.ru</nuxt-link>
-      <nuxt-link :to="{query: {source: 'mos'}}" exact active-class="main__filter-link_active"  class="main__filter-link">Mos.ru</nuxt-link>
+      <nuxt-link :to="{query: {...this.$route.query, source: 'all'}}" exact  active-class="main__filter-link_active"  class="main__filter-link">Все</nuxt-link>
+      <nuxt-link :to="{query: {...this.$route.query, source: 'lenta'}}" exact  active-class="main__filter-link_active" class="main__filter-link">Lenta.ru</nuxt-link>
+      <nuxt-link :to="{query: {...this.$route.query, source: 'mos'}}" exact  active-class="main__filter-link_active"  class="main__filter-link">Mos.ru</nuxt-link>
     </div>
 </template>
 

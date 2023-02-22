@@ -8,6 +8,11 @@ import ContentView from "~/components/UI/content-view";
 export default {
   layout: 'default',
   name: "index",
+  data () {
+    return {
+
+    }
+  },
   components: {
     ContentView
   },
@@ -17,7 +22,8 @@ export default {
       await store.dispatch('postModule/fetchMosPosts')
     }
 
-  }
+  },
+
 }
 </script>
 

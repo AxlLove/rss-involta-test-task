@@ -3,7 +3,6 @@ import Parser from "rss-parser";
 
 export const state = () => ({
   lentaData: [],
-  dataLoading: false,
   mosData: [],
   viewData: []
 })
@@ -18,6 +17,22 @@ export const mutations = {
   },
   setMos(state, posts) {
     state.mosData = posts;
+  },
+  setFilteredPosts(state, filters) {
+    let arr = []
+    if (filters.source === 'all' || !filters.source) {
+      arr = [...state.lentaData, ...state.mosData]
+    }
+    if(filters.source === 'mos') {
+      arr = state.mosData
+    }
+    if(filters.source === 'lenta') {
+      arr = state.lentaData
+    }
+    if (filters.filter && arr) {
+      arr = arr.filter(item=> item?.content?.includes(filters.filter) || item?.title?.includes(filters.filter))
+    }
+    state.viewData = arr;
   }
 
 }
@@ -29,7 +44,6 @@ export const actions = {
  },
   async fetchMosPosts({commit}) {
     let res =  await parser.parseURL('https://www.mos.ru/rss')
-    console.log(res)
     commit('setMos', res.items)
   }
 }
