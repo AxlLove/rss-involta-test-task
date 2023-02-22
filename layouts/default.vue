@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <v-header/>
     <div class="nav">
       <feed-filters/>
@@ -20,7 +20,11 @@ export default {
 </script>
 
 <style scoped>
-
+.main {
+  max-width: 1400px;
+  min-width: 425px;
+  margin: auto;
+}
 .nav {
   margin: 29px 170px 0;
   display: flex;

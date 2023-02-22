@@ -23,7 +23,7 @@ computed: {
   getData: function() {
     const ms = Date.parse(this.card.pubDate)
     let date = new Date(ms)
-    return `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`
+    return `${date.getDate()}.${date.getMonth()+ 1 }.${date.getFullYear()}`
   }
 }
 }
@@ -46,7 +46,7 @@ computed: {
   height: 60px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
   margin-top: 25px;
   font-size: 14px;
@@ -79,5 +79,16 @@ computed: {
   font-size: 14px;
   line-height: 20px;
   color: #DCDCDC;
+}
+@media (max-width: 1280px) {
+.card {
+  width: 382px;
+}
+}
+@media (max-width: 840px) {
+  .card {
+    width: 382px;
+    padding: 30px 22px 0;
+  }
 }
 </style>

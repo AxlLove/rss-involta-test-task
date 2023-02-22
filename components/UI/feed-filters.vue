@@ -1,8 +1,8 @@
 <template>
     <div class="main__filter-links">
-      <a class="main__filter-link">Все</a>
-      <a class="main__filter-link">Lenta.ru</a>
-      <a class="main__filter-link">Mos.ru</a>
+      <nuxt-link :to="{query: ''}" exact active-class="main__filter-link_active"  class="main__filter-link">Все</nuxt-link>
+      <nuxt-link :to="{query: {source: 'lenta'}}" exact active-class="main__filter-link_active" class="main__filter-link">Lenta.ru</nuxt-link>
+      <nuxt-link :to="{query: {source: 'mos'}}" exact active-class="main__filter-link_active"  class="main__filter-link">Mos.ru</nuxt-link>
     </div>
 </template>
 
@@ -23,6 +23,7 @@ export default {
   line-height: 16px;
   color: rgba(0, 41, 255, 1);
   cursor: pointer;
+  text-decoration: none;
 }
 .main__filter-link:hover {
   opacity: .8;

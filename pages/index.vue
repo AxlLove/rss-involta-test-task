@@ -8,8 +8,16 @@ import ContentView from "~/components/UI/content-view";
 export default {
   layout: 'default',
   name: "index",
-  components: {ContentView}
+  components: {
+    ContentView
+  },
+  async fetch({store}) {
+    if (!store.state.lentaData && !store.state.mosData) {
+      await store.dispatch('postModule/fetchLentaPosts')
+      await store.dispatch('postModule/fetchMosPosts')
+    }
 
+  }
 }
 </script>
 

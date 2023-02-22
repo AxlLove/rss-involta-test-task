@@ -1,16 +1,29 @@
 <template>
   <div class="view-buttons">
-    <button class="view-buttons__button view-buttons__button_type_line-unactive"/>
-    <button class="view-buttons__button view-buttons__button_type_grid-unactive"/>
+    <button @click="increment"
+            class="view-buttons__button"
+            v-bind:class="{lineActive: $store.state.viewModule.grid, 'view-buttons__button_type_line-unactive': !$store.state.viewModule.grid}"/>
+    <button @click="dincrement"
+            class="view-buttons__button view-buttons__button_type_grid-unactive"
+            v-bind:class="{active: !$store.state.viewModule.grid, 'view-buttons__button_type_grid-unactive': $store.state.viewModule.grid}"
+    />
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'content-view',
   data() {
     return {
       test: true
+    }
+  }, methods: {
+    increment() {
+      this.$store.commit('viewModule/viewGrid')
+    },
+    dincrement() {
+      this.$store.commit('viewModule/viewInline')
     }
   }
 }
@@ -31,8 +44,14 @@ export default {
   .view-buttons__button_type_grid-unactive {
     background-image: url("../../static/grid-icon-unactive.svg");
   }
+  .active {
+    background-image: url("../../static/grid-icon-active.svg");
+  }
   .view-buttons__button_type_line-unactive {
     background-image: url("../../static/line-icon-unactive.svg");
+  }
+  .lineActive {
+    background-image: url("../../static/line-icon-active.svg");
   }
   .view-buttons__button:hover {
     opacity: .8;

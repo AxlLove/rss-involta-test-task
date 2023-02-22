@@ -13,7 +13,7 @@
       </div>
     </div>
   </template>
-  
+
   <script>
   export default {
     name: "image-card",
@@ -33,7 +33,7 @@
   }
   }
   </script>
-  
+
   <style scoped>
   .card {
     width: 100%;
@@ -80,7 +80,7 @@
     align-items: center;
     background: #FCFCFC;
   }
-  
+
   .card__source-link {
     font-weight: 400;
     font-size: 14px;
@@ -92,5 +92,18 @@
     font-size: 14px;
     line-height: 20px;
     color: #DCDCDC;
+  }
+  @media (max-width: 840px) {
+    .card__content {
+      flex-direction: column;
+      align-items: center;
+    }
+    .card__image {
+      width: 338px;
+      height: 166px;
+    }
+    .card__content {
+      padding: 20px 20px;
+    }
   }
   </style>

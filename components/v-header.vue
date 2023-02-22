@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header__container">
       <h1 class="header__title">Список новостей</h1>
-      <button @click="test" class="header__reset-button"/>
+      <button @click="addQuery" class="header__reset-button"/>
     </div>
     <search-input v-model="searchQuery"/>
   </header>
@@ -16,13 +16,18 @@ export default {
   components: {SearchInput, MyInput},
   data() {
     return {
-      a: 225,
       searchQuery: ''
     }
   },
   methods: {
-    test() {
-      console.log(this.a)
+    addQuery(value) {
+
+    },
+  },
+  watch:  {
+    searchQuery(newQuery) {
+      console.log(newQuery)
+      this.$router.push({query: { filter: newQuery}});
     }
   }
 }
@@ -63,7 +68,7 @@ export default {
 
   @media (max-width: 1080px) {
   .header {
-    margin: 29px 90px 0;
+    margin: 0px 90px 0;
   }
   .header__title {
     font-size: 32px;
