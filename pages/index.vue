@@ -1,5 +1,7 @@
 <template>
-  <rss-feed/>
+  <section>
+    <rss-feed/>
+  </section>
 </template>
 
 <script>
@@ -21,7 +23,6 @@ export default {
       await store.dispatch('postModule/fetchLentaPosts')
       await store.dispatch('postModule/fetchMosPosts')
     }
-
   },
 
 }

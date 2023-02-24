@@ -20,13 +20,13 @@ export default {
     }
   },
   methods: {
-    addQuery(value) {
+    addQuery() {
+      this.$router.push({ path: '/' })
 
     },
   },
   watch:  {
     searchQuery(newQuery) {
-      console.log(this.$route.query)
       this.$router.push({query: {...this.$route.query, filter: newQuery}});
     }
   }

@@ -1,22 +1,28 @@
 <template>
     <div class="card">
         <div class="card__content">
-            <img class="card__image" :src="card.image" :alt="card.title">
+            <img class="card__image" :src="card.enclosure.url" :alt="card.title">
             <div>
                 <h3 class="card__title">{{ card.title }}</h3>
-                <p class="card__description">{{ card.description }}</p>
+                <p class="card__description">{{ card.content }}</p>
             </div>
         </div>
       <div class="card__container">
-        <a class="card__source-link" :href="card.type" target="_blank">{{ card.type }}</a>
+        <a class="card__source-link" :href="getLink" target="_blank">{{ getGetSourceLink }}</a>
         <p class="card__date">{{ getData }}</p>
       </div>
     </div>
   </template>
 
   <script>
+  import {REG_EXP} from '@/assets/js/constants';
   export default {
     name: "image-card",
+    data() {
+      return {
+        // reg: sourceLink;
+      }
+    },
     props: {
       card: {
         type: Object,
@@ -28,6 +34,13 @@
       const ms = Date.parse(this.card.pubDate)
       let date = new Date(ms)
       return `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`
+    },
+    getGetSourceLink: function () {
+      const res = this.card.link.match(REG_EXP)[1]
+      return 'www.' + res
+    },
+    getLink: function () {
+      return 'https://' + this.card.link.match(REG_EXP)[1] + '/'
     }
     //TODO вынести
   }
@@ -36,14 +49,12 @@
 
   <style scoped>
   .card {
-    width: 100%;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.05);
     border-radius: 3px;
   }
   .card__content {
     padding: 30px 31px 0 30px;
     display: flex;
-    justify-content: space-between;
     gap: 30px;
   }
   .card__image {

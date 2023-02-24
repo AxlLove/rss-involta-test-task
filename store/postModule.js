@@ -8,7 +8,9 @@ export const state = () => ({
 })
 
 export const getters = {
-
+  getViewPosts (store) {
+    return store.viewData
+  }
 }
 
 export const mutations = {
@@ -21,29 +23,31 @@ export const mutations = {
   setFilteredPosts(state, filters) {
     let arr = []
     if (filters.source === 'all' || !filters.source) {
-      arr = [...state.lentaData, ...state.mosData]
+      arr = [...state.lentaData, ...state.mosData];
     }
     if(filters.source === 'mos') {
-      arr = state.mosData
+      arr = state.mosData;
     }
     if(filters.source === 'lenta') {
-      arr = state.lentaData
+      arr = state.lentaData;
     }
     if (filters.filter && arr) {
-      arr = arr.filter(item=> item?.content?.includes(filters.filter) || item?.title?.includes(filters.filter))
+      arr = arr.filter((item)=> item?.content?.toLowerCase().includes(filters.filter.toLowerCase()) || item?.title?.toLowerCase().includes(filters?.filter?.toLowerCase()))
     }
     state.viewData = arr;
   }
-
+ // Попробовать переписать на геттеры
 }
 const parser = new Parser()
 export const actions = {
  async fetchLentaPosts({commit}) {
    let res =  await parser.parseURL('https://lenta.ru/rss/news')
+
    commit('setLenta', res.items)
  },
   async fetchMosPosts({commit}) {
     let res =  await parser.parseURL('https://www.mos.ru/rss')
+    console.log(res)
     commit('setMos', res.items)
   }
 }

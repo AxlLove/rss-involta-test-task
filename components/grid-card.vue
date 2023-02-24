@@ -63,9 +63,9 @@ computed: {
 }
 .card__container {
   margin-top: 19px;
+  padding-bottom: 16px;
   display: flex;
   justify-content: space-between;
-  background: #FCFCFC;
 }
 
 .card__source-link {
