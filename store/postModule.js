@@ -6,7 +6,6 @@ export const state = () => ({
   mosData: [],
   viewData: [],
   limit: 3
-
 })
 
 export const getters = {
@@ -14,8 +13,6 @@ export const getters = {
     return store.viewData
   },
   getCurrentPagePosts: (store) => (page) => {
-    console.log(page)
-    console.log('=>', store.viewData.slice(page, page+3))
     return store.viewData.slice(page, page + store.limit)
   }
 }
