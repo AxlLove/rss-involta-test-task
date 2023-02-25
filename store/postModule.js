@@ -4,12 +4,19 @@ import Parser from "rss-parser";
 export const state = () => ({
   lentaData: [],
   mosData: [],
-  viewData: []
+  viewData: [],
+  limit: 3
+
 })
 
 export const getters = {
   getViewPosts (store) {
     return store.viewData
+  },
+  getCurrentPagePosts: (store) => (page) => {
+    console.log(page)
+    console.log('=>', store.viewData.slice(page, page+3))
+    return store.viewData.slice(page, page + store.limit)
   }
 }
 
@@ -36,7 +43,7 @@ export const mutations = {
     }
     state.viewData = arr;
   }
- // Попробовать переписать на геттеры
+ //TODO Попробовать переписать на геттеры
 }
 const parser = new Parser()
 export const actions = {
@@ -46,8 +53,7 @@ export const actions = {
    commit('setLenta', res.items)
  },
   async fetchMosPosts({commit}) {
-    let res =  await parser.parseURL('https://www.mos.ru/rss')
-    console.log(res)
+    let res =  await parser.parseURL('https://www.mos.ru/rss') 
     commit('setMos', res.items)
   }
 }

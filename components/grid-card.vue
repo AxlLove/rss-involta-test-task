@@ -1,16 +1,17 @@
 <template>
   <div class="card">
     <h3 class="card__title">{{ card.title }}</h3>
-    <p class="card__description">{{ card.description }}</p>
+    <p class="card__description">{{ card.content }}</p>
     <a class="card__link" :href="card.link" target="_blank">Подробнее</a>
     <div class="card__container">
-      <a class="card__source-link" :href="card.type" target="_blank">{{ card.type }}</a>
+      <a class="card__source-link" :href="getLink" target="_blank">{{ getGetSourceLink }}</a>
       <p class="card__date">{{ getData }}</p>
     </div>
   </div>
 </template>
 
 <script>
+  import {REG_EXP} from '@/assets/js/constants';
 export default {
   name: "grid-card",
   props: {
@@ -24,7 +25,14 @@ computed: {
     const ms = Date.parse(this.card.pubDate)
     let date = new Date(ms)
     return `${date.getDate()}.${date.getMonth()+ 1 }.${date.getFullYear()}`
-  }
+  },
+  getGetSourceLink: function () {
+      const res = this.card.link.match(REG_EXP)[1]
+      return 'www.' + res
+    },
+    getLink: function () {
+      return 'https://' + this.card.link.match(REG_EXP)[1] + '/'
+    }
 }
 }
 </script>

@@ -1,6 +1,6 @@
 <template >
   <ul v-if="getContent.length > 1" class="rss-feed rss-feed_type_grid" >
-    <li :class="{li: $store.state.viewModule.grid}" v-for="card in getContent">
+    <li :class="{li: $store.state.viewModule.grid}" v-for="card in getPage">
       <grid-card v-if="!$store.state.viewModule.grid" :key="card.id"  :card="card" />
       <image-card v-else  :key="card.id" :card="card" />
     </li>
@@ -22,6 +22,11 @@ export default {
     getContent() {
       return this.$store.getters["postModule/getViewPosts"]
     },
+    getPage() {
+      const fc = this.$store.getters["postModule/getCurrentPagePosts"]
+      console.log(fc(5))
+      return fc(5)
+    },
   },
   watch: {
     '$route.query': {
@@ -33,7 +38,7 @@ export default {
   },
   mounted() {
     this.$store.commit('postModule/setFilteredPosts', this.$route.query)
-  }
+  },
 }
 </script>
 
