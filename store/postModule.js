@@ -15,12 +15,14 @@ export const getters = {
   getViewPosts (store) {
     return store.viewData
   },
-  getCurrentPagePosts: (store) => (page = 1) => {
+  getCurrentPagePosts: (store , getters) => (page = 1) => {
     if (page === 1) {
-      return store.viewData.slice(page, page + store.limit)
+      return store.viewData.slice(page-1, (page + getters.getLimit)-1)
     }
-    const currentPage = page * store.limit
-    return store.viewData.slice(currentPage, currentPage + store.limit)
+
+    const currentPage = page * getters.getLimit
+    console.log(page)
+    return store.viewData.slice(currentPage-1, (currentPage + getters.getLimit)-1)
   },
   getLimit (store) {
     return !store.grid? 4 : 3

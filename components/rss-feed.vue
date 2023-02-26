@@ -1,8 +1,8 @@
 <template >
   <ul v-if="getContent.length > 1" class="rss-feed rss-feed_type_grid" >
     <li :class="{li: $store.state.viewModule.grid}" v-for="card in getPage">
-      <grid-card v-if="!$store.state.viewModule.grid" :key="card.id"  :card="card" />
-      <image-card v-else  :key="card.id" :card="card" />
+      <grid-card v-if="!$store.state.postModule.grid" :key="card.id"  :card="card" />
+      <image-card v-else  :key="card.pubDate" :card="card" />
     </li>
   </ul>
   <h2 v-else class="rss-feed__nt">Ничего не найдено</h2>
@@ -23,8 +23,7 @@ export default {
     },
     getPage() {
       const fc = this.$store.getters["postModule/getCurrentPagePosts"]
-      console.log(fc(5))
-      return fc()
+      return fc(this.$route.params.page)
     },
   },
   watch: {
