@@ -6,16 +6,19 @@
       <content-view/>
     </div>
     <nuxt/>
+    <Paginate/>
   </div>
 </template>
 
 <script>
 import ContentView from "~/components/UI/content-view";
 import FeedFilters from "~/components/UI/feed-filters";
+import Paginate from "~/components/UI/paginate";
 
 export default {
   name: "default",
-  components: {FeedFilters, ContentView},
+  components: {FeedFilters, ContentView, Paginate},
+
 }
 </script>
 

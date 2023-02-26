@@ -6,10 +6,11 @@
 
 <script>
 
+
 export default {
   components: {},
   layout: 'default',
-  name: "index",
+  name: "id",
   async fetch({store}) {
     if (store.getters['postModule/getViewPosts'].length === 0) {
       await store.dispatch('postModule/fetchLentaPosts')
@@ -17,6 +18,7 @@ export default {
     }
   },
 }
+
 </script>
 
 <style scoped>

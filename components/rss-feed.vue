@@ -9,12 +9,11 @@
 </template>
 
 <script>
-import {mockMos, mockFeed} from "assets/js/mock";
+
 export default {
   name: "rss-list",
   data() {
     return {
-      cards: mockFeed(),
       result: this.params
     }
   },
@@ -25,7 +24,7 @@ export default {
     getPage() {
       const fc = this.$store.getters["postModule/getCurrentPagePosts"]
       console.log(fc(5))
-      return fc(5)
+      return fc()
     },
   },
   watch: {

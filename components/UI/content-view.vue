@@ -2,10 +2,10 @@
   <div class="view-buttons">
     <button @click="increment"
             class="view-buttons__button"
-            v-bind:class="{lineActive: $store.state.viewModule.grid, 'view-buttons__button_type_line-unactive': !$store.state.viewModule.grid}"/>
+            v-bind:class="{lineActive: $store.state.postModule.grid, 'view-buttons__button_type_line-unactive': !$store.state.viewModule.grid}"/>
     <button @click="dincrement"
             class="view-buttons__button view-buttons__button_type_grid-unactive"
-            v-bind:class="{active: !$store.state.viewModule.grid, 'view-buttons__button_type_grid-unactive': $store.state.viewModule.grid}"
+            v-bind:class="{active: !$store.state.postModule.grid, 'view-buttons__button_type_grid-unactive': $store.state.viewModule.grid}"
     />
   </div>
 </template>
@@ -20,10 +20,10 @@ export default {
     }
   }, methods: {
     increment() {
-      this.$store.commit('viewModule/viewGrid')
+      this.$store.commit('postModule/viewGrid')
     },
     dincrement() {
-      this.$store.commit('viewModule/viewInline')
+      this.$store.commit('postModule/viewInline')
     }
   }
 }
